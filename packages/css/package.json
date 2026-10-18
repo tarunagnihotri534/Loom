@@ -1,16 +1,46 @@
 {
-  "name": "@loom/css",
+  "name": "loom-design-system-css",
   "version": "0.1.0",
-  "private": true,
+  "description": "Generated CSS custom properties, modern reset, and utility classes for Loom design system",
   "license": "MIT",
-  "style": "./src/index.css",
+  "author": "Tarun Agnihotri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarunagnihotri534/Loom.git",
+    "directory": "packages/css"
+  },
+  "homepage": "https://github.com/tarunagnihotri534/Loom/tree/main/packages/css#readme",
+  "bugs": {
+    "url": "https://github.com/tarunagnihotri534/Loom/issues"
+  },
+  "keywords": [
+    "css",
+    "design-system",
+    "tokens",
+    "reset",
+    "utilities",
+    "loom"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "./dist/index.css",
+  "style": "./dist/index.css",
+  "sideEffects": true,
   "exports": {
-    ".": "./src/index.css",
-    "./tokens.css": "./src/tokens.css",
-    "./reset.css": "./src/reset.css",
-    "./utilities.css": "./src/utilities.css"
+    ".": "./dist/index.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./reset.css": "./dist/reset.css",
+    "./utilities.css": "./dist/utilities.css",
+    "./dist/*": "./dist/*"
   },
   "scripts": {
-    "build": "exit 0"
+    "build": "node scripts/build.js"
   }
 }

@@ -1,18 +1,45 @@
 {
-  "name": "@loom/tokens",
+  "name": "loom-design-system-tokens",
   "version": "0.1.0",
-  "private": true,
+  "description": "Design tokens for the Loom design system with compile-time 3-tier layering and WCAG AA contrast validation",
   "license": "MIT",
+  "author": "Tarun Agnihotri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarunagnihotri534/Loom.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/tarunagnihotri534/Loom/tree/main/packages/tokens#readme",
+  "bugs": {
+    "url": "https://github.com/tarunagnihotri534/Loom/issues"
+  },
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "wcag",
+    "tokens",
+    "loom"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
-  "main": "./dist/tokens.json",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/tokens.d.ts",
   "exports": {
-    "./json": "./dist/tokens.json",
-    "./types": "./dist/tokens.d.ts",
     ".": {
       "types": "./dist/tokens.d.ts",
-      "default": "./dist/tokens.json"
-    }
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./json": "./dist/tokens.json",
+    "./tokens.json": "./dist/tokens.json"
   },
   "scripts": {
     "build": "tsx src/build.ts",

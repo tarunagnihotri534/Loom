@@ -1,24 +1,52 @@
 {
-  "name": "@loom/react",
+  "name": "loom-design-system-react",
   "version": "0.1.0",
-  "private": true,
+  "description": "Accessible React UI components built strictly with Loom design tokens",
   "license": "MIT",
+  "author": "Tarun Agnihotri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarunagnihotri534/Loom.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/tarunagnihotri534/Loom/tree/main/packages/react#readme",
+  "bugs": {
+    "url": "https://github.com/tarunagnihotri534/Loom/issues"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "design-system",
+    "tokens",
+    "button",
+    "input",
+    "card",
+    "loom",
+    "wcag"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "dist/styles.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles.css": "./src/styles.css"
+    "./styles.css": "./dist/styles.css"
   },
-  "files": [
-    "dist",
-    "src/styles.css"
-  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest run",

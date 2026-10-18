@@ -11,9 +11,13 @@
     "docker:dev": "docker compose up dev",
     "docker:test": "docker compose run --rm test",
     "docker:check": "docker compose run --rm check",
-    "docker:build": "docker compose build"
+    "docker:build": "docker compose build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   }

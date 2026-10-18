@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input, Card } from "@loom/react";
+import { Button, Input, Card } from "loom-design-system-react";
 
 export function App() {
   const [isDark, setIsDark] = useState(false);

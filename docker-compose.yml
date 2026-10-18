@@ -16,7 +16,7 @@ services:
     working_dir: /app
     environment:
       - NODE_ENV=development
-    command: pnpm --filter @loom/docs dev --host 0.0.0.0
+    command: pnpm --filter loom-docs dev --host 0.0.0.0
 
   # Test service: Runs complete build + Vitest suites once and exits
   test:

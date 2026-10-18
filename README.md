@@ -35,10 +35,10 @@ flowchart TD
     Config["tokens.config.ts\n(Single Source of Truth)"] --> Resolve["resolveTokens (resolve.ts)\nLayer Validation & Alias Resolution"]
     Resolve --> Audit["auditContrast (contrast.ts)\nWCAG AA 4.5:1 Contrast Audit"]
     Audit --> Build["Token Generator (build.ts)"]
-    Build --> CSS["packages/css/src/tokens.css\n(:root & .dark CSS Variables)"]
+    Build --> CSS["packages/css/dist/index.css\n(:root & .dark CSS Variables)"]
     Build --> DTS["packages/tokens/dist/tokens.d.ts\n(TypeScript Declarations)"]
     Build --> JSON["packages/tokens/dist/tokens.json\n(JSON Tokens)"]
-    CSS --> ReactPkg["@loom/react\n(Token-Bound Components)"]
+    CSS --> ReactPkg["loom-design-system-react\n(Token-Bound Components)"]
     CSS --> Docs["apps/docs\n(Vite Playground)"]
     ReactPkg --> Docs
 ```
@@ -76,10 +76,10 @@ loom/
 ├── apps/
 │   └── docs/          # Vite + React playground showcasing tokens and components
 ├── packages/
-│   ├── css/           # CSS reset, utilities, and generated tokens.css (:root and .dark)
-│   ├── react/         # Accessible React components (Button, Input, Card) built with tokens
-│   └── tokens/        # Single source of truth (tokens.config.ts), resolver, and WCAG audit
-├── .github/workflows/ # GitHub Actions CI workflows for native and Docker validation
+│   ├── css/           # CSS reset, utilities, and generated tokens (loom-design-system-css)
+│   ├── react/         # Accessible React components (loom-design-system-react)
+│   └── tokens/        # Single source of truth, resolver, and WCAG audit (loom-design-system-tokens)
+├── .github/workflows/ # CI validation and automated Changesets release workflows
 ├── AGENTS.md          # Architecture constraints and rules for AI coding agents
 ├── Dockerfile         # Multi-stage container definition (base, deps, build, docs)
 ├── docker-compose.yml # Docker Compose services for dev, test, and drift checks
@@ -99,11 +99,26 @@ The token engine is written in pure TypeScript in `packages/tokens/src/`:
 
 ## Quick Start
 
-### Prerequisites
+### Installation for Consumers
+
+Install the packages from npm:
+
+```bash
+npm install loom-design-system-tokens loom-design-system-css loom-design-system-react
+```
+
+Or with `pnpm`:
+
+```bash
+pnpm add loom-design-system-tokens loom-design-system-css loom-design-system-react
+```
+
+### Local Monorepo Development
+
+Prerequisites:
 - Node.js >= 20.0.0
 - pnpm >= 11.0.0
 
-### Setup and Build
 Run each command in sequence (supported in both PowerShell and bash):
 
 ```bash
@@ -124,8 +139,8 @@ The documentation playground will start locally at `http://localhost:3000`.
 Import the reset, generated tokens, utilities, and component styles in your application root:
 
 ```tsx
-import "@loom/css";
-import "@loom/react/styles.css";
+import "loom-design-system-css";
+import "loom-design-system-react/styles.css";
 ```
 
 ### 2. Use React Components
@@ -134,7 +149,9 @@ All components consume Loom CSS variables automatically:
 
 ```tsx
 import React, { useState } from "react";
-import { Button, Input, Card } from "@loom/react";
+import "loom-design-system-css";
+import "loom-design-system-react/styles.css";
+import { Button, Input, Card } from "loom-design-system-react";
 
 export function FeedbackCard() {
   const [comment, setComment] = useState("");
@@ -166,6 +183,15 @@ export function FeedbackCard() {
 }
 ```
 
+### 3. Use Tokens Directly in Code
+
+```typescript
+import tokens from "loom-design-system-tokens";
+
+console.log(tokens.light["semantic.color.action.primary"]); // "#2563eb"
+console.log(tokens.dark["semantic.color.action.primary"]);  // "#2563eb"
+```
+
 ---
 
 ## Workspace Scripts
@@ -182,6 +208,9 @@ The following scripts are defined in the root `package.json`:
 | `docker:dev` | `docker compose up dev` | Runs the docs playground inside a container with hot reloading on port 3000 |
 | `docker:test` | `docker compose run --rm test` | Executes the build and test suite inside an isolated Linux container |
 | `docker:check` | `docker compose run --rm check` | Executes the token drift check inside an isolated container |
+| `changeset` | `changeset` | Creates a new changeset to declare version changes |
+| `version-packages` | `changeset version` | Bumps package versions based on committed changesets |
+| `release` | `changeset publish` | Publishes updated packages to npm with public access |
 
 ---
 
@@ -205,8 +234,8 @@ pnpm run docker:check
 - **Contrast Audit**: 18 critical foreground and background color combinations are checked across light and dark modes during every build. Every pair exceeds the 4.5:1 WCAG AA threshold.
 - **Drift Check**: Automated `check:generated` prevents drift between hand-committed CSS and the single source of truth in `tokens.config.ts`.
 - **Test Coverage**: 23 automated tests pass across 5 test suites:
-  - `@loom/tokens`: 9 tests covering 3-tier layer validation, invalid alias rejection, relative luminance calculations, and contrast failure handling.
-  - `@loom/react`: 14 tests covering `Button`, `Input`, and `Card` rendering, click and keyboard activations (`Space` and `Enter`), disabled state suppression, and ARIA attributes.
+  - `loom-design-system-tokens`: 9 tests covering 3-tier layer validation, invalid alias rejection, relative luminance calculations, and contrast failure handling.
+  - `loom-design-system-react`: 14 tests covering `Button`, `Input`, and `Card` rendering, click and keyboard activations (`Space` and `Enter`), disabled state suppression, and ARIA attributes.
 
 ---
 

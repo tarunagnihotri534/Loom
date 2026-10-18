@@ -1,5 +1,5 @@
 {
-  "name": "@loom/docs",
+  "name": "loom-docs",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@loom/css": "workspace:*",
-    "@loom/react": "workspace:*",
-    "@loom/tokens": "workspace:*",
+    "loom-design-system-css": "workspace:*",
+    "loom-design-system-react": "workspace:*",
+    "loom-design-system-tokens": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
