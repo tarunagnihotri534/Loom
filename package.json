@@ -1,0 +1,20 @@
+{
+  "name": "loom-monorepo",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@11.4.0",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "dev": "turbo run dev",
+    "check:generated": "turbo run build && git diff --exit-code packages/css/src/tokens.css",
+    "docker:dev": "docker compose up dev",
+    "docker:test": "docker compose run --rm test",
+    "docker:check": "docker compose run --rm check",
+    "docker:build": "docker compose build"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  }
+}

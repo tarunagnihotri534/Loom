@@ -1,0 +1,16 @@
+{
+  "name": "@loom/css",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "style": "./src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./tokens.css": "./src/tokens.css",
+    "./reset.css": "./src/reset.css",
+    "./utilities.css": "./src/utilities.css"
+  },
+  "scripts": {
+    "build": "exit 0"
+  }
+}

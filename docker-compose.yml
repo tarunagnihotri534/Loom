@@ -1,0 +1,38 @@
+services:
+  # Dev service: Hot-reloading documentation playground
+  dev:
+    build:
+      context: .
+      target: deps
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/packages/tokens/node_modules
+      - /app/packages/css/node_modules
+      - /app/packages/react/node_modules
+      - /app/apps/docs/node_modules
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+    command: pnpm --filter @loom/docs dev --host 0.0.0.0
+
+  # Test service: Runs complete build + Vitest suites once and exits
+  test:
+    build:
+      context: .
+      target: build
+    working_dir: /app
+    command: pnpm turbo run build test
+
+  # Check service: Rebuilds tokens and verifies git diff on committed generated files
+  check:
+    build:
+      context: .
+      target: deps
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: sh -c "pnpm turbo run build && git diff --exit-code packages/css/src/tokens.css"

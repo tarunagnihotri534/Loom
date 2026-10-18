@@ -1,0 +1,187 @@
+/**
+ * Loom React Component Styles
+ * Strictly bound to Loom CSS design tokens
+ */
+
+/* ==========================================================================
+   Button Component
+   ========================================================================== */
+
+.loom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--loom-spacing-2);
+  border-radius: var(--loom-button-radius);
+  font-family: var(--loom-button-font-family);
+  font-size: var(--loom-button-font-size);
+  font-weight: var(--loom-button-font-weight);
+  line-height: var(--loom-button-line-height);
+  padding: var(--loom-button-padding-y) var(--loom-button-padding-x);
+  transition-property: background-color, border-color, color, box-shadow, opacity;
+  transition-duration: var(--loom-button-transition-duration);
+  transition-timing-function: var(--loom-button-transition-easing);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.loom-button:focus-visible {
+  outline: 2px solid var(--loom-button-focus-ring);
+  outline-offset: 2px;
+}
+
+.loom-button:disabled,
+.loom-button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Button Variants */
+.loom-button--primary {
+  background-color: var(--loom-button-primary-bg);
+  color: var(--loom-button-primary-text);
+  border-color: var(--loom-button-primary-border);
+}
+
+.loom-button--primary:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--loom-button-primary-bg-hover);
+  border-color: var(--loom-button-primary-bg-hover);
+}
+
+.loom-button--primary:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--loom-button-primary-bg-active);
+  border-color: var(--loom-button-primary-bg-active);
+}
+
+.loom-button--subtle {
+  background-color: var(--loom-button-subtle-bg);
+  color: var(--loom-button-subtle-text);
+  border-color: var(--loom-button-subtle-border);
+}
+
+.loom-button--subtle:hover:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--loom-button-subtle-bg-hover);
+  border-color: var(--loom-button-subtle-border);
+}
+
+.loom-button--subtle:active:not(:disabled):not([aria-disabled="true"]) {
+  background-color: var(--loom-color-border-default);
+}
+
+/* Button Sizes */
+.loom-button--sm {
+  padding: var(--loom-spacing-1) var(--loom-spacing-3);
+  font-size: var(--loom-typography-font-size-xs);
+}
+
+.loom-button--md {
+  padding: var(--loom-button-padding-y) var(--loom-button-padding-x);
+  font-size: var(--loom-button-font-size);
+}
+
+.loom-button--lg {
+  padding: var(--loom-spacing-3) var(--loom-spacing-6);
+  font-size: var(--loom-typography-font-size-base);
+}
+
+/* ==========================================================================
+   Input Component
+   ========================================================================== */
+
+.loom-input {
+  display: block;
+  width: 100%;
+  border-radius: var(--loom-input-radius);
+  padding: var(--loom-input-padding-y) var(--loom-input-padding-x);
+  font-family: var(--loom-input-font-family);
+  font-size: var(--loom-input-font-size);
+  line-height: var(--loom-input-line-height);
+  background-color: var(--loom-input-bg);
+  color: var(--loom-input-text);
+  border: 1px solid var(--loom-input-border);
+  transition-property: border-color, box-shadow, background-color;
+  transition-duration: var(--loom-input-transition-duration);
+  transition-timing-function: var(--loom-input-transition-easing);
+}
+
+.loom-input::placeholder {
+  color: var(--loom-input-placeholder);
+}
+
+.loom-input:focus-visible {
+  outline: 2px solid var(--loom-input-border-focus);
+  outline-offset: 1px;
+  border-color: var(--loom-input-border-focus);
+}
+
+.loom-input:disabled,
+.loom-input[aria-disabled="true"] {
+  background-color: var(--loom-color-bg-subtle);
+  color: var(--loom-color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Input Invalid / Error State */
+.loom-input--invalid,
+.loom-input[aria-invalid="true"] {
+  border-color: var(--loom-color-feedback-error);
+}
+
+.loom-input--invalid:focus-visible,
+.loom-input[aria-invalid="true"]:focus-visible {
+  outline-color: var(--loom-color-feedback-error);
+  border-color: var(--loom-color-feedback-error);
+}
+
+/* Input Sizes */
+.loom-input--sm {
+  padding: var(--loom-spacing-1) var(--loom-spacing-2);
+  font-size: var(--loom-typography-font-size-xs);
+}
+
+.loom-input--md {
+  padding: var(--loom-input-padding-y) var(--loom-input-padding-x);
+  font-size: var(--loom-input-font-size);
+}
+
+.loom-input--lg {
+  padding: var(--loom-spacing-3) var(--loom-spacing-4);
+  font-size: var(--loom-typography-font-size-base);
+}
+
+/* ==========================================================================
+   Card Component
+   ========================================================================== */
+
+.loom-card {
+  display: block;
+  border-radius: var(--loom-card-radius);
+  padding: var(--loom-card-padding);
+  background-color: var(--loom-card-bg);
+  border: 1px solid var(--loom-card-border);
+  box-shadow: var(--loom-card-shadow);
+  color: var(--loom-color-text-primary);
+  font-family: var(--loom-typography-font-family-sans);
+}
+
+.loom-card--interactive {
+  cursor: pointer;
+  transition-property: box-shadow, border-color, transform;
+  transition-duration: var(--loom-motion-duration-fast);
+  transition-timing-function: var(--loom-motion-easing-ease-in-out);
+}
+
+.loom-card--interactive:hover {
+  box-shadow: var(--loom-shadow-elevated);
+  border-color: var(--loom-color-border-focus);
+}
+
+.loom-card--interactive:focus-visible {
+  outline: 2px solid var(--loom-color-border-focus);
+  outline-offset: 2px;
+}
