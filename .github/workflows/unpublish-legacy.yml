@@ -1,0 +1,22 @@
+name: Unpublish Separated Packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unpublish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Unpublish Separated Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm unpublish loom-design-system-tokens --force
+          npm unpublish loom-design-system-css --force
+          npm unpublish loom-design-system-react --force
