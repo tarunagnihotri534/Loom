@@ -1,6 +1,6 @@
 {
   "name": "loom-design-system-react",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Accessible React UI components built strictly with Loom design tokens",
   "license": "MIT",
   "author": "Tarun Agnihotri",
