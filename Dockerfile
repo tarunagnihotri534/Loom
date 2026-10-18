@@ -1,7 +1,9 @@
-# Stage 1: Base (pinned Node & pnpm)
-FROM node:20-alpine AS base
+# Stage 1: Base (pinned Node 22 & pnpm 11)
+FROM node:22-alpine AS base
 RUN apk add --no-cache libc6-compat git
 WORKDIR /app
+# Configure git safe directory for container volume mounts
+RUN git config --global --add safe.directory '*'
 # Enable corepack and pin pnpm version matching package.json (11.4.0)
 RUN corepack enable && corepack prepare pnpm@11.4.0 --activate
 

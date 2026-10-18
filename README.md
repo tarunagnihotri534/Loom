@@ -116,7 +116,7 @@ pnpm add loom-design-system-tokens loom-design-system-css loom-design-system-rea
 ### Local Monorepo Development
 
 Prerequisites:
-- Node.js >= 20.0.0
+- Node.js >= 22.13.0 (required for pnpm 11 node:sqlite engine)
 - pnpm >= 11.0.0
 
 Run each command in sequence (supported in both PowerShell and bash):

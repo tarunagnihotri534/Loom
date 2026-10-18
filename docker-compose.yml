@@ -35,4 +35,4 @@ services:
       - .:/app
       - /app/node_modules
     working_dir: /app
-    command: sh -c "pnpm turbo run build && git diff --exit-code packages/css/src/tokens.css"
+    command: sh -c "git config --global --add safe.directory '*' && pnpm turbo run build && git diff --exit-code packages/css/src/tokens.css"
