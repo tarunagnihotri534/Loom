@@ -1,6 +1,6 @@
 {
   "name": "loom-design-system-tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Design tokens for the Loom design system with compile-time 3-tier layering and WCAG AA contrast validation",
   "license": "MIT",
   "author": "Tarun Agnihotri",
