@@ -1,0 +1,80 @@
+{
+  "name": "loom-design-system",
+  "version": "0.1.0",
+  "description": "Unified Loom Design System: tokens, CSS variables, and accessible React UI components",
+  "license": "MIT",
+  "author": "Tarun Agnihotri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarunagnihotri534/Loom.git",
+    "directory": "packages/loom-design-system"
+  },
+  "homepage": "https://github.com/tarunagnihotri534/Loom/tree/main/packages/loom-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/tarunagnihotri534/Loom/issues"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "tokens",
+    "css",
+    "loom",
+    "wcag",
+    "accessible",
+    "ui"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "dist/styles.css",
+    "dist/index.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.js",
+      "require": "./dist/tokens.cjs"
+    },
+    "./tokens.json": "./dist/tokens.json",
+    "./styles.css": "./dist/styles.css",
+    "./css": "./dist/styles.css",
+    "./index.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "dependencies": {
+    "loom-design-system-css": "workspace:*",
+    "loom-design-system-react": "workspace:*",
+    "loom-design-system-tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  }
+}

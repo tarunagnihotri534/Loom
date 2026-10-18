@@ -134,24 +134,32 @@ The documentation playground will start locally at `http://localhost:3000`.
 
 ## Usage
 
-### 1. Import CSS Tokens and Styles
+### Unified Package (Recommended)
 
-Import the reset, generated tokens, utilities, and component styles in your application root:
-
-```tsx
-import "loom-design-system-css";
-import "loom-design-system-react/styles.css";
+Install the all-in-one package:
+```bash
+npm install loom-design-system react react-dom
 ```
 
-### 2. Use React Components
-
-All components consume Loom CSS variables automatically:
-
+Import styles and components directly:
 ```tsx
 import React, { useState } from "react";
+import "loom-design-system/styles.css";
+import { Button, Input, Card } from "loom-design-system";
+```
+
+### Modular Packages
+
+You can also install packages individually if you only need tokens or CSS:
+- `loom-design-system-tokens`: 3-tier token definitions & contrast validation
+- `loom-design-system-css`: Generated CSS custom properties & reset
+- `loom-design-system-react`: Accessible UI components
+
+```tsx
 import "loom-design-system-css";
 import "loom-design-system-react/styles.css";
 import { Button, Input, Card } from "loom-design-system-react";
+```
 
 export function FeedbackCard() {
   const [comment, setComment] = useState("");

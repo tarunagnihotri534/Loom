@@ -54,6 +54,40 @@ importers:
 
   packages/css: {}
 
+  packages/loom-design-system:
+    dependencies:
+      loom-design-system-css:
+        specifier: workspace:*
+        version: link:../css
+      loom-design-system-react:
+        specifier: workspace:*
+        version: link:../react
+      loom-design-system-tokens:
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@types/node':
+        specifier: ^22.13.9
+        version: 22.20.5
+      '@types/react':
+        specifier: ^19.0.10
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.0.4
+        version: 19.3.0(@types/react@19.3.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.3.1
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.3.1(react@19.3.1)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.5.1(postcss@8.5.30)(tsx@4.23.15)(typescript@5.9.3)(yaml@2.9.1)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.9.3
+
   packages/react:
     devDependencies:
       '@testing-library/jest-dom':
