@@ -2,6 +2,7 @@
 FROM node:22-alpine AS base
 RUN apk add --no-cache libc6-compat git
 WORKDIR /app
+ENV CI=true
 # Configure git safe directory for container volume mounts
 RUN git config --global --add safe.directory '*'
 # Enable corepack and pin pnpm version matching package.json (11.4.0)
@@ -10,7 +11,7 @@ RUN corepack enable && corepack prepare pnpm@11.4.0 --activate
 # Stage 2: Dependencies (layer caching)
 FROM base AS deps
 # Copy package manifest files for workspace dependency resolution
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmr[c] ./
 COPY packages/tokens/package.json ./packages/tokens/
 COPY packages/css/package.json ./packages/css/
 COPY packages/react/package.json ./packages/react/
