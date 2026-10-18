@@ -14,7 +14,7 @@
     "docker:build": "docker compose build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish"
+    "release": "pnpm --filter loom-design-system-tokens publish --access public --no-git-checks && pnpm --filter loom-design-system-css publish --access public --no-git-checks && pnpm --filter loom-design-system-react publish --access public --no-git-checks && changeset git-tag"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
